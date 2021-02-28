@@ -1,3 +1,6 @@
+// Este schema solo es necesario para usar dentro de la web
+// https://esper-epl-tryout.appspot.com/epltryout/mainform.html
+// compact.py lo eliminará.
 create schema iotEvent(type string, capacity double, occupancy double, source string, sourceType string, sourcePath string, numberOfIncoming double, numberOfOutgoing double);
 
 expression getOccupancy alias for {(
@@ -8,6 +11,8 @@ expression getOccupancy alias for {(
 expression getBoundedOccupancy alias for {(
     case when getOccupancy < 0 then 0 else getOccupancy end
 )}
+// En esta query no hace falta el select * porque
+// el update no va a usar ni el entityid ni el entitytype.
 select "replica_ocupacion" as ruleName,
     numberOfIncoming? as numberOfIncoming,
     numberOfOutgoing? as numberOfOutgoing,

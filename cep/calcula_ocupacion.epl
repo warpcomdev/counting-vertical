@@ -1,3 +1,6 @@
+// Este schema solo es necesario para usar dentro de la web
+// https://esper-epl-tryout.appspot.com/epltryout/mainform.html
+// compact.py lo eliminará.
 create schema iotEvent(type string, capacity double, occupancy double, numberOfIncoming double, numberOfOutgoing double);
 
 expression getOccupancy alias for {(
@@ -8,6 +11,8 @@ expression getOccupancy alias for {(
 expression getBoundedOccupancy alias for {(
     case when getOccupancy < 0 then 0 else getOccupancy end
 )}
+// el '*' es necesario porque si no, el CEP pierde el EntityID y EntityType
+// de la entidad que se está escribiendo, y la acción 'update' falla.
 select "calcula_ocupacion" as ruleName, *,
     current_timestamp().format("yyyy-MM-dd'T'HH:mm:ss.SSSX") as timeinstant,
     getBoundedOccupancy as updatedOccupancy,

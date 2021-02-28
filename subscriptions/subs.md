@@ -1,10 +1,11 @@
-## Suscripciones requeridas
+# Suscripciones requeridas
 
-Las subscripciones que son necesarias para el funcionamiento del vertical son las siguientes.
+Las subscripciones imprescindibles para el funcionamiento del vertical son las de CEP, que se encargan de actualizar los contadores de las entidades.
 
 Observar que en el caso de usar el vertical en modo mancomunado habrá que crear este mismo juego de subscripciones en cada uno de los subservicios correspondientes a los elementos del mancomunado.
     
-### Subscripción a CEP para accesos
+## Subscripción a CEP para accesos
+
 * **Estado**: Activa
 * **Descripción**: Envio de notificaciones a CEP para accesos
 * **Fecha y hora de expiración**: en blanco
@@ -20,7 +21,8 @@ Observar que en el caso de usar el vertical en modo mancomunado habrá que crear
     * ID: `.*` (con checkbox de patrón de búsqueda marcado)
     * Type: Access
 
-### Subscripción a CEP para zonas
+## Subscripción a CEP para zonas
+
 * **Estado**: Activa
 * **Descripción**: Envio de notificaciones a CEP para zonas
 * **Fecha y hora de expiración**: en blanco
@@ -36,11 +38,12 @@ Observar que en el caso de usar el vertical en modo mancomunado habrá que crear
     * ID: `.*` (con checkbox de patrón de búsqueda marcado)
     * Type: Zone
 
-## Suscripciones opcionales
+# Suscripciones opcionales
 
 Las siguientes suscripciones sólo son obligatorias si se quiere almacenar el histórico de accesos. En general, no será necesario almacenar estas entidades, sino las entidades a la s que este vertical hace referencia (las indicadas por los atributos `source` / `sourceType` / `sourcePath`).
 
-### Subscripción a Access
+## Subscripción a Access
+
 * **Estado**: Activa
 * **Descripción**: Envio de notificaciones a POSTGRESQL Access
 * **Fecha y hora de expiración**: en blanco
@@ -56,8 +59,8 @@ Las siguientes suscripciones sólo son obligatorias si se quiere almacenar el hi
     * ID: `.*` (con checkbox de patrón de búsqueda marcado) 
     * Type: Access
     
-    
-### Subscripción a Zone
+## Subscripción a Zone
+
 * **Estado**: Activa
 * **Descripción**: Envio de notificaciones a POSTGRESQL Zone
 * **Fecha y hora de expiración**: en blanco

@@ -77,7 +77,7 @@ Ejemplo de `Access` (en NGSIv2):
     },
     "category": {
         "type": "Text",
-        "value": "Public"
+        "value": "AccesoPlaya"
     },
     "width": {
         "type": "Number",
@@ -109,7 +109,7 @@ Ejemplo de `Access` (en NGSIv2):
 | address                 | TextUnrestricted | Static    | Dirección de la zona                                                                                                                                                   | Ejemplo: Paseo Marítimo, 16,   12100 El Grao de Castellón, Castellón                                                | -        | -       |
 | location                | geo:json         | Static    | Posición geográfica [lon, lat]                                                                                                                                         | Ejemplo: "location":   {"type": "geo:json", "value":   {"type": "Point", "coordinates": [0.026029,   39.986109] } } | -        | -       |
 | areaServed              | geo:json:area    | Static    | Territorio                                                                                                                                                             |                                                                                                                     | -        | -       |
-| category                | Text             | Static    | Categoría de zona (pública,   privada, gratuita, de pago, etc) según necesidades del cliente                                                                           | -                                                                                                                   | -        | -       |
+| category                | Text             | Static    | Categoría de zona (edificio, faro, etc) según necesidades del cliente                                                                                                  | -                                                                                                                   | -        | -       |
 | width                   | Number           | Static    | Ancho de la zona                                                                                                                                                       | Ejemplo: 50                                                                                                         | m        | 0-n     |
 | length                  | Number           | Static    | Longitud de la zona                                                                                                                                                    | Ejemplo: 400                                                                                                        | m        | 0-n     |
 | occupationRate          | Text             | Static    | Nivel de ocupación típico                                                                                                                                              | Posibles valores: low, medium,   high                                                                               | -        | -       |
@@ -175,7 +175,7 @@ Ejemplo de `Zone` (en NGSIv2):
     },
     "category": {
         "type": "Text",
-        "value": "Public"
+        "value": "Playa"
     },
     "status": {
         "type": "Text",

@@ -1,3 +1,5 @@
+# Simulaciones
+
 Este directorio contiene dos recursos:
 
 * urbo2-counting-entities.csv: fichero que entidades del vertical (estático)
@@ -5,9 +7,11 @@ Este directorio contiene dos recursos:
 Ambos usan como caso de ejemplo (pe. geo-localización de las entidades, etc.) el de la smartcity de Santander (aunque se encuentra desplegado en el servicio alcobendas).
 
 ## Fichero CSV
+
 Este fichero ha de ser cargado utilizando el Portal de la Plataforma, como paso previo al lanzamiento de la simulación.
 
 ## Simulación
+
 El simulador es un programa en node (version de referencia: 8.12). Para instalarlo basta simplemente con clonar el repositorio e instalar sus dependencias:
 
 ```

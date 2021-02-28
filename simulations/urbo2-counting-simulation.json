@@ -1,7 +1,7 @@
 {
     "domain": {
       "service": "alcobendas",
-      "subservice": "/conteo"
+      "subservice": "/aforo"
     },
     "contextBroker": {
       "protocol": "http",

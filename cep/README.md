@@ -1,5 +1,6 @@
-A continuación, un volcado de referencia de las reglas utilizada para el CEP en este vertical,
-tomado en el entorno de LAB. Tras el volcado, se proporciona una explicación de alto nivel de las distintas reglas.
+# Reglas de CEP
+
+A continuación, un volcado de referencia de las reglas utilizada para el CEP en este vertical, tomado en el entorno de LAB. Tras el volcado, se proporciona una explicación de alto nivel de las distintas reglas.
 
 ```json
 
@@ -34,7 +35,7 @@ tomado en el entorno de LAB. Tras el volcado, se proporciona una explicación de
                     ]
                 }
             },
-            "subservice": "/conteo",
+            "subservice": "/aforo",
             "service": "alcobendas"
         },
         {
@@ -104,7 +105,7 @@ tomado en el entorno de LAB. Tras el volcado, se proporciona una explicación de
                     }
                 }
             ],
-            "subservice": "/conteo",
+            "subservice": "/aforo",
             "service": "alcobendas"
         },
         {
@@ -133,7 +134,7 @@ tomado en el entorno de LAB. Tras el volcado, se proporciona una explicación de
                     ]
                 }
             },
-            "subservice": "/conteo",
+            "subservice": "/aforo",
             "service": "alcobendas"
         },
         {
@@ -175,7 +176,7 @@ tomado en el entorno de LAB. Tras el volcado, se proporciona una explicación de
                     ]
                 }
             },
-            "subservice": "/conteo",
+            "subservice": "/aforo",
             "service": "alcobendas"
         },
     ],
@@ -201,7 +202,6 @@ Actualiza los valores de ocupación y porcentajes en base a los valores de `capa
 
 La regla se ha construido a partir del EPL especificado en el fichero [calcula_ocupacion.epl](calcula_ocupacion.epl). Este fichero puede validarse en el [simulador de reglas EPL online](https://esper-epl-tryout.appspot.com/epltryout/mainform.html), utilizando el siguiente evento:
 
-
 ```epl
 iotEvent={type="Access",capacity=1500,occupation=50,numberOfIncoming=500,numberOfOutgoing=10}
 ```
@@ -217,7 +217,7 @@ La regla actualiza una **entidad externa**, como puede ser por ejemplo un objeto
 La regla se ha construido a partir del EPL especificado en el fichero [replica_ocupacion.epl](replica_ocupacion.epl). Este fichero puede validarse en el [simulador de reglas EPL online](https://esper-epl-tryout.appspot.com/epltryout/mainform.html), utilizando el siguiente evento:
 
 ```epl
-iotEvent={type="Access",capacity=1500,source="Sadinero1",sourceType="Beach",sourcePath="/playas",numberOfIncoming=50,numberOfOutgoing=10}
+iotEvent={type="Access",capacity=1500,source="Sardinero1",sourceType="Beach",sourcePath="/playas",numberOfIncoming=50,numberOfOutgoing=10}
 ```
 
 El 0.001 es debido a un bug actual en el gauge de Urbo y no sería necesario una vez se solucione dicho bug. Observar que se marca esta actualización en la entidad con la fecha `dateCalculatedOccupancy`.

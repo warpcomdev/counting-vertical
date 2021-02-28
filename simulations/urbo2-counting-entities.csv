@@ -2,7 +2,7 @@ entityID,entityType,TimeInstant<DateTime>,zoneRef<Text>,source<Text>,sourcePath<
 Zone1Acces1,Access,2021-02-27T09:00:00Z,Zone1,,,,Acceso1,,,,,,OK,,,,50,,,,,2021-02-27T09:00:00Z
 Zone2Access1,Access,2021-02-27T09:00:00Z,Zone2,,,,Acceso1,,,,,,OK,,,,30,,,,,2021-02-27T09:00:00Z
 Zone2Access2,Access,2021-02-27T09:00:00Z,Zone2,,,,Acceso2,,,,,,OK,,,,60,,,,,2021-02-27T09:00:00Z
-Zone1,Zone,2021-02-27T09:00:00Z,,Faro1,/conteo,Faro,Zona1,,,,,,OK,,,,150,,,,,2021-02-27T09:00:00Z
-Zone2,Zone,2021-02-27T09:00:00Z,,Yacimiento1,/conteo,Yacimiento,Zona2,,,,,,OK,,,,100,,,,,2021-02-27T09:00:00Z
+Zone1,Zone,2021-02-27T09:00:00Z,,Faro1,/aforo,Faro,Zona1,,,,,,OK,,,,150,,,,,2021-02-27T09:00:00Z
+Zone2,Zone,2021-02-27T09:00:00Z,,Yacimiento1,/aforo,Yacimiento,Zona2,,,,,,OK,,,,100,,,,,2021-02-27T09:00:00Z
 Faro1,Faro,2021-02-27T09:00:00Z,,,,,,,,,,,,,,,,,,,,2021-02-27T09:00:00Z
 Yacimiento1,Yacimiento,2021-02-27T09:00:00Z,,,,,,,,,,,,,,,,,,,,2021-02-27T09:00:00Z
