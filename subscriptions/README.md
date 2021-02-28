@@ -15,7 +15,7 @@ Observar que en el caso de usar el vertical en modo mancomunado habrá que crear
     * Entorno Onpremise: http://iot-perseo-fe:9090/notices
     * Entorno SaaS: http://10.0.0.2:9090/notices
 * **Formato de atributos**: legacy
-* **Atributos a notificar**: zoneRef, status, capacity, numberOfIncoming, numberOfOutgoing, occupancy, percentageOfOccupation
+* **Atributos a notificar**: zoneRef, source, sourceType, sourcePath, capacity, numberOfIncoming, numberOfOutgoing, occupancy
 * **Condición**: TimeInstant
 * **Entidades**:
     * ID: `.*` (con checkbox de patrón de búsqueda marcado)
@@ -32,7 +32,7 @@ Observar que en el caso de usar el vertical en modo mancomunado habrá que crear
     * Entorno Onpremise: http://iot-perseo-fe:9090/notices
     * Entorno SaaS: http://10.0.0.2:9090/notices
 * **Formato de atributos**: legacy
-* **Atributos a notificar**: source, sourcePath, sourceType, status, capacity, thresholdWarning, thresholdCritical, tefNotif, numberOfIncoming, numberOfOutgoing, occupancy, percentageOfOccupation
+* **Atributos a notificar**: source, sourcePath, sourceType, capacity, numberOfIncoming, numberOfOutgoing, occupancy
 * **Condición**: TimeInstant
 * **Entidades**:
     * ID: `.*` (con checkbox de patrón de búsqueda marcado)

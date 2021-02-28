@@ -35,4 +35,4 @@ where (type? = 'Access' or type? = 'Zone') and
     sourceType? is not null and
     cast(sourceType?, string) != '' and
     sourcePath? is not null and
-    cast(sourcePath?, string) != '' and
+    cast(sourcePath?, string) != ''
