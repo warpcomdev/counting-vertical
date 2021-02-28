@@ -1,0 +1,15 @@
+create schema iotEvent(type string, zoneRef string, numberOfIncoming double, numberOfOutgoing double);
+
+select "replica_accesos" as ruleName,
+    numberOfIncoming? as numberOfIncoming,
+    numberOfOutgoing? as numberOfOutgoing,
+    zoneRef? as zoneRef,
+    current_timestamp().format("yyyy-MM-dd'T'HH:mm:ss.SSSX") as timeinstant
+from iotEvent
+where type?='Access' and
+    zoneRef? is not null and
+    cast(zoneRef?, string) != '' and
+    numberOfOutgoing? is not null and
+    cast(cast(numberOfOutgoing?,string),double) >= 0 and
+    numberOfIncoming? is not null and
+    cast(cast(numberOfIncoming?,string),double)>= 0

@@ -1,0 +1,33 @@
+create schema iotEvent(type string, capacity double, occupancy double, source string, sourceType string, sourcePath string, numberOfIncoming double, numberOfOutgoing double);
+
+expression getOccupancy alias for {(
+    (case when occupancy? is null or occupancy? = '[?]' then 0 else cast(cast(occupancy?, string), double) end)
+    + cast(cast(numberOfIncoming?, string), double)
+    - cast(cast(numberOfOutgoing?, string), double)
+)}
+expression getBoundedOccupancy alias for {(
+    case when getOccupancy < 0 then 0 else getOccupancy end
+)}
+select "replica_ocupacion" as ruleName,
+    numberOfIncoming? as numberOfIncoming,
+    numberOfOutgoing? as numberOfOutgoing,
+    source? as source,
+    sourceType? as sourceType,
+    sourcePath? as sourcePath,
+    current_timestamp().format("yyyy-MM-dd'T'HH:mm:ss.SSSX") as timeinstant,
+    getBoundedOccupancy as updatedOccupancy,
+    getBoundedOccupancy / cast(cast(capacity?, string), double) as percentage
+from iotEvent
+where (type? = 'Access' or type? = 'Zone') and
+    capacity? is not null and
+    cast(cast(capacity? ,string), double) > 0 and
+    numberOfIncoming? is not null and
+    cast(cast(numberOfIncoming?, string), double) >= 0 and
+    numberOfOutgoing? is not null and
+    cast(cast(numberOfOutgoing?, string), double) >= 0 and
+    source? is not null and
+    cast(source?, string) != '' and
+    sourceType? is not null and
+    cast(sourceType?, string) != '' and
+    sourcePath? is not null and
+    cast(sourcePath?, string) != '' and

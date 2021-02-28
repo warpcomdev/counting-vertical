@@ -1,0 +1,1 @@
+Actualmente no se han definido scripts para este vertical.

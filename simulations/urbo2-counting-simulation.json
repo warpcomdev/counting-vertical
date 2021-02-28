@@ -1,0 +1,1324 @@
+{
+    "domain": {
+      "service": "alcobendas",
+      "subservice": "/conteo"
+    },
+    "contextBroker": {
+      "protocol": "http",
+      "host": "213.149.252.217",
+      "port": 1026,
+      "ngsiVersion": "2.0"
+    },
+    "authentication": {
+      "provider": "keystone",
+      "protocol": "http",
+      "host": "iot.demo.urbo2.es",
+      "port": 5001,
+      "user": "admin_alcobendas",
+      "password": "4dmin_alcobendas",
+      "retry": {
+        "times": 10,
+        "interval": 1000
+      }
+    },
+	"exports": {
+    "StandardSchedule": "0 */15 * * * *",
+	  "incoming-1" : "time-random-linear-interpolator({\"spec\": [[0,0],[7.9,0],[8,random(0,10)],[10,random(20,25)],[12,random(40,70)],[14,random(50,80)],[16,random(40,70)],[18,random(20,40)],[20,random(10,20)],[22,random(0,10)],[24,0]],\"return\": {\"type\": \"integer\", \"rounding\": \"ceil\"}})",
+	  "incoming-2" : "time-random-linear-interpolator({\"spec\": [[0,0],[7,0],[9.9,0],[10,random(10,15)],[12,random(20,30)],[14,random(30,40)],[16,random(40,20)],[18,random(20,40)],[20,random(10,20)],[22,random(0,10)],[24,0]],\"return\": {\"type\": \"integer\", \"rounding\": \"ceil\"}})",
+	  "incoming-3" : "time-random-linear-interpolator([[0,0],[8,0],[18,0],[24,0]])",
+	  "incoming-4" : "time-random-linear-interpolator({\"spec\": [[0,0],[7,0],[8,0],[15.9,0],[16,random(40,20)],[18,random(20,40)],[20,random(10,20)],[22,random(0,10)],[24,0]],\"return\": {\"type\": \"integer\", \"rounding\": \"ceil\"}})",
+	  "incoming-5" : "time-random-linear-interpolator({\"spec\": [[0,0],[7,0],[8,random(10,20)],[10,random(20,45)],[12,random(60,70)],[14,random(50,80)],[15,0],[24,0]],\"return\": {\"type\": \"integer\", \"rounding\": \"ceil\"}})",
+					
+		  
+	  "outgoing-1" : "time-random-linear-interpolator({\"spec\": [[0,0],[7,0],[8,0],[10,random(0,10)],[12,random(20,30)],[14,random(30,50)],[16,random(30,50)],[18,random(40,70)],[20,random(20,30)],[20,random(0,10)],[22,random(0,10)],[24,0]],\"return\": {\"type\": \"integer\", \"rounding\": \"ceil\"}})",
+	  "outgoing-2" : "time-random-linear-interpolator({\"spec\": [[0,0],[7,0],[9.9,0],[10,0],[12,random(10,15)],[14,random(20,30)],[16,random(30,40)],[18,random(20,40)],[20,random(10,20)],[22,random(10,40)],[24,0]],\"return\": {\"type\": \"integer\", \"rounding\": \"ceil\"}})",
+	  "outgoing-3" : "time-random-linear-interpolator([[0,0],[8,0],[18,0],[24,0]])",
+	  "outgoing-4" : "time-random-linear-interpolator({\"spec\": [[0,0],[7,0],[8,0],[17.9,0],[18,random(20,40)],[20,random(10,20)],[22,random(0,10)],[24,0]],\"return\": {\"type\": \"integer\", \"rounding\": \"ceil\"}})",
+	  "outgoing-5" : "time-random-linear-interpolator({\"spec\": [[0,0],[7,0],[8,0],[10,random(10,20)],[12,random(40,60)],[14,random(70,90)],[15,0],[24,0]],\"return\": {\"type\": \"integer\", \"rounding\": \"ceil\"}})",
+	  	  
+	  "occupancy-1" : "time-random-linear-interpolator({\"spec\": [[0,0],[7.9,0],[8,random(0,10)],[10,random(20,25)],[12,random(100,300)],[14,random(300,600)],[16,random(600,1500)],[18,random(1500,800)],[20,random(500,200)],[22,random(200,10)],[24,0]],\"return\": {\"type\": \"integer\", \"rounding\": \"ceil\"}})",
+	  "poccupancy-1" : "time-random-linear-interpolator([[0,0],[7.9,0],[8,random(0,10)],[10,random(2,5)],[12,random(10,30)],[14,random(30,60)],[16,random(60,70)],[18,random(75,80)],[20,random(50,20)],[22,random(20,1)],[24,0]])",
+	  
+	  "occupancy-2" : "time-random-linear-interpolator({\"spec\": [[0,0],[7.9,0],[8,random(0,10)],[10,random(10,35)],[12,random(100,200)],[14,random(200,300)],[16,random(300,535)],[18,random(535,400)],[20,random(400,100)],[22,random(100,0)],[24,0]],\"return\": {\"type\": \"integer\", \"rounding\": \"ceil\"}})",
+	  "poccupancy-2" : "time-random-linear-interpolator([[0,0],[7.9,0],[8,random(0,10)],[10,random(2,10)],[12,random(20,50)],[14,random(50,70)],[16,random(70,98)],[18,random(98,80)],[20,random(80,60)],[22,random(30,5)],[24,0]])",
+	  
+	  "occupancy-3" : "time-random-linear-interpolator({\"spec\": [[0,0],[7.9,0],[8,random(0,10)],[10,random(5,10)],[12,random(10,19)],[14,random(19,28)],[16,random(28,38)],[18,40],[20,random(38,18)],[22,random(15,0)],[24,0]],\"return\": {\"type\": \"integer\", \"rounding\": \"ceil\"}})",
+	  "poccupancy-3" : "time-random-linear-interpolator([[0,0],[7.9,0],[8,random(0,10)],[10,random(2,25)],[12,random(25,49)],[14,random(49,60)],[16,random(60,98)],[18,100],[20,random(98,48)],[22,random(30,0)],[24,0]])"
+	    
+		  
+	},
+	
+"entities": [
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_Camello_1",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-1)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-1)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_Camello_2",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-2)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-2)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_Camello_3",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-3)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-3)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"cerrado\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_1sardinero_1",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-4)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-4)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[18,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_1sardinero_2",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-5)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-5)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[15,\"cerrado\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_1sardinero_3",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-1)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-1)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_1sardinero_4",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-2)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-2)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_1sardinero_5",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-3)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-3)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"cerrado\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_1sardinero_6",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-4)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-4)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[18,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_1sardinero_7",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-5)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-5)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[15,\"cerrado\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_1sardinero_8",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-1)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-1)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_1sardinero_9",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-2)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-2)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_1sardinero_10",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-3)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-3)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"cerrado\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_1sardinero_11",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-4)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-4)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[18,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_2sardinero_1",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-5)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-5)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[15,\"cerrado\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_2sardinero_2",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-1)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-1)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_2sardinero_3",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-2)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-2)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_2sardinero_4",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-3)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-3)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"cerrado\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_2sardinero_5",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-4)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-4)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[18,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_2sardinero_6",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-5)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-5)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[15,\"cerrado\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_2sardinero_7",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-1)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-1)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_2sardinero_8",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-2)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-2)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_2sardinero_9",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-3)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-3)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"cerrado\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_concha_1",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-4)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-4)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[18,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_concha_2",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-5)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-5)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[15,\"cerrado\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_concha_3",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-1)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-1)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_Molinucos_1",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-2)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-2)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_bikinis_1",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-3)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-3)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"cerrado\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_bikinis_2",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-4)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-4)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[18,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_Magdalena_1",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-5)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-5)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[15,\"cerrado\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_Magdalena_2",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-1)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-1)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_Magdalena_3",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-2)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-2)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_Magdalena_4",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-3)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-3)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"cerrado\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_Magdalena_5",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-4)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-4)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[18,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},	
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_Magdalena_6",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-5)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-5)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[15,\"cerrado\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_Peligros_1",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-1)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-1)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_Peligros_2",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-2)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-2)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_Matalenas_1",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-3)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-3)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"cerrado\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_ElBocal_1",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-4)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-4)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[18,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_LaMaruca_1",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-5)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-5)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[15,\"cerrado\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_LaMaruca_2",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-1)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-1)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_virgendelMar_1",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-2)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-2)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_virgendelMar_2",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-3)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-3)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"cerrado\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_virgendelMar_3",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-4)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-4)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[18,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_virgendelMar_4",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-5)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-5)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[15,\"cerrado\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_virgendelMar_5",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-1)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-1)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+    }
+		]
+		},
+		{
+        "schedule": "import(StandardSchedule)",
+        "entity_name": "Acceso_virgendelMar_6",
+        "entity_type": "Access",
+        "active": [
+		{
+            "name": "numberOfIncoming",
+            "type": "Number",
+            "value": "import(incoming-2)"
+		},
+		{
+            "name": "numberOfOutgoing",
+            "type": "Number",
+            "value": "import(outgoing-2)"
+		},
+		{
+            "name": "status",
+            "type": "Text",
+            "value": "text-rotation-interpolator({\"units\": \"hours\", \"text\": [[0,\"cerrado\"],[8,\"abierto\"],[24,\"cerrado\"]]})"
+    },
+		{
+          "name": "TimeInstant",
+          "type": "DateTime",
+          "value": "date-increment-interpolator({\"origin\": \"now\", \"increment\": 0})"
+        }
+		]
+		}
+				
+	]
+}
