@@ -23,7 +23,7 @@ $ npm install
 Una vez instalado, para arrancar la simulación (desde el directorio del simulador):
 
 ```
-$ node bin/fiwareDeviceSimulatorCLI -c /path/to/urbo2-beaches-simulation.json -p 60000
+$ node bin/fiwareDeviceSimulatorCLI -c /path/to/urbo2-counting-simulation.json -p 60000
 ```
 
 El simulador muestra trazas de progreso de este estilo:
@@ -40,11 +40,11 @@ Puede lanzarse el simulador para que ejecute de forma continuada en una máquina
 Sirva el siguiente ejemplo:
 
 ```
-forever start /opt/fiware-device-simulator/bin/fiwareDeviceSimulatorCLI -c /opt/urbo2_simulations/urbo2-beaches-simulation.json -p 60000
+forever start /opt/fiware-device-simulator/bin/fiwareDeviceSimulatorCLI -c /opt/urbo2_simulations/urbo2-counting-simulation.json -p 60000
 ```
 
 ## Cambio de la programación
-Si se quiere cambiar la frecuencia de actualización basta con cambiar los valores en el campo schedule de urbo2-beaches-simulation.json. Pe. una actualización cada 5 minutos quedaría así:
+Si se quiere cambiar la frecuencia de actualización basta con cambiar los valores en el campo schedule de urbo2-counting-simulation.json. Pe. una actualización cada 5 minutos quedaría así:
 
 ```
 "schedule": "48 */5 * * * *"
